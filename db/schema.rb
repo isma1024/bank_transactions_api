@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170120192318) do
+ActiveRecord::Schema.define(version: 20170121182349) do
+
+  create_table "accounts", force: :cascade do |t|
+    t.decimal  "balance"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "transactions", force: :cascade do |t|
     t.decimal  "import"
     t.string   "description"
+    t.integer  "account_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["account_id"], name: "index_transactions_on_account_id"
   end
 
 end

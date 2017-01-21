@@ -11,5 +11,17 @@ Rails.application.routes.draw do
 
   delete 'transaction/delete/:id' => 'transaction#delete'
 
+  get 'account/list'
+
+  get 'account/get/:id' => 'account#get'
+
+  post 'account/create'
+
+  put 'account/edit/:id' => 'account#update'
+
+  delete 'account/delete/:id' => 'account#delete'
+
+  get 'account/:id/transactions' => 'account#get_transactions'
+
   root 'welcome#index'
 end
