@@ -18,7 +18,7 @@ class TransactionController < ApplicationController
 
     def create
         @account = get_account(params[:account_id])
-        @transaction = @account.transactions.new(import: params[:import], description: params[:description])
+        @transaction = @account.transactions.new(import: params[:import], description: params[:description], category_id: params[:category_id])
 
         if @transaction.valid?
             @transaction.save
@@ -30,7 +30,7 @@ class TransactionController < ApplicationController
 
     def update
     	@transaction = Transaction.find(params[:id])
-    	@transaction.update(import: params[:import], description: params[:description])
+    	@transaction.update(import: params[:import], description: params[:description], category_id: params[:category_id])
 
     	render json: json_response(@transaction)
     end

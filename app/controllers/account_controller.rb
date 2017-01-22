@@ -1,5 +1,5 @@
 class AccountController < ApplicationController
-	def list
+    def list
   		@accounts = Account.all
 
   		render json: json_response(@accounts)
